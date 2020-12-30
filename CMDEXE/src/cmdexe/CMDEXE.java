@@ -7,10 +7,6 @@ import javafx.event.ActionEvent;
 import javafx.stage.Stage;
 
 public class CMDEXE extends Application{
-	public static void main(String[] args){
-		System.out.println("Yeet");
-        //launch(args);
-    }
 	public Stage primaryStage = new Stage();
 	@Override
     public void start(Stage prime) throws IOException {
@@ -24,5 +20,8 @@ public class CMDEXE extends Application{
     		System.exit(0);
         });
     }
-
+	public static void main(String[] args){
+		System.out.println("Yeet");
+        //launch(args);
+    }
 }
