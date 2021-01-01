@@ -5,10 +5,14 @@ import cmdexe.Welcome;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import cmdexe.CMDEXE;
 
 public class RegistrationController {
+	
+	CMDEXE CMDEXE = new CMDEXE();
 	
 	@FXML
 	public TextField Username; 
@@ -29,6 +33,12 @@ public class RegistrationController {
 	private Label ErrorLabel;
 	
 	@FXML
+	private Button NextButton;
+	
+	@FXML
+	private Button BackButton;
+	
+	@FXML
 	private void BackToWelcome(ActionEvent event) throws IOException {
 		new Welcome().WelcomePage(event);
     }
@@ -38,18 +48,14 @@ public class RegistrationController {
 		//Reseting the Error Label
 		ResetErrorLabel();
 		
-		//Checking if all the fields are filled
-		CheckingIfAllFieldsFilled();
-		
-		//Checking if the password is more than 8 charaters. 
-		PasswordCorrectLength();
-		
 		//Check for any errors
-		if (AllFieldsFilled == false) {
+		if (CheckingIfAllFieldsFilled() == false) {
 			ErrorLabel.setText("Please fill in all the fields.");
+			ErrorLabel.setVisible(true);
 		}
-		else if (PasswordCorrectLength == false) {
+		else if (PasswordCorrectLength() == false) {
 			ErrorLabel.setText("Your password isn't strong enough. Please make a stronger password.");
+			ErrorLabel.setVisible(true);
 		}
 		else {
 			//Put the data into the database
@@ -60,29 +66,26 @@ public class RegistrationController {
 		}
 	}
 	
-	private boolean AllFieldsFilled;
-	private boolean PasswordCorrectLength;
-	
 	private void ResetErrorLabel() {
 		ErrorLabel.setVisible(false);
 		ErrorLabel.setText("");
 	}
 	
-	private void CheckingIfAllFieldsFilled() {
+	private boolean CheckingIfAllFieldsFilled() {
 		if (Username.getText().isEmpty() || Password.getText().isEmpty() || HostIP.getText().isEmpty() || HostUsername.getText().isEmpty() || HostPassword.getText().isEmpty()) {
-				AllFieldsFilled = true;
+			return false;
 		}	
 		else {
-			AllFieldsFilled = false; 
+			return true; 
 		}
 	}
 	
-	private void PasswordCorrectLength() {
-		if (Password.getText().length() < 8) {
-			ErrorLabel.setText("Your password isn't strong enough. Please make a stronger password");
+	private boolean PasswordCorrectLength() {
+		if (Password.getText().length() > 8) {
+			return true;
 		}
 		else {
-			PasswordCorrectLength = false;
+			return false;
 		}
 	}
 	

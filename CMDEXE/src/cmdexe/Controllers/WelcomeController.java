@@ -15,19 +15,20 @@ public class WelcomeController {
     //Registration Button
     @FXML
     private void ToRegistrationPage(ActionEvent event) throws IOException{
-    	WriteWelcomeBooleanToFile();
+    	//WriteWelcomeBooleanToFile();
     	new Registration().RegistrationPage(event);
     }
     
     //Login Button
     @FXML
     private void ToLoginPage(ActionEvent event) throws IOException{
-    	WriteWelcomeBooleanToFile();
+    	//WriteWelcomeBooleanToFile();
+    	System.out.println("To Login Page");
     	new Login().LoginPage(event);
     }
     
 	private void WriteWelcomeBooleanToFile() throws IOException {
-    	FilesAndFolders.ReadInFile("C:\\Users\\hdg11\\eclipse-workspace\\CMDEXE\\src\\cmdexe", "UserInformation.UI");
-    	FilesAndFolders.WriteToFile("C:\\Users\\hdg11\\eclipse-workspace\\CMDEXE\\src\\cmdexe", "C:\\Users\\hdg11\\eclipse-workspace\\CMDEXE\\src\\cmdexe", "SeenWelcomePage=True");
+    	FilesAndFolders.ReadInFile(System.getProperty("user.dir") + "\\src\\cmdexe", "UserInformation.UI");
+    	FilesAndFolders.WriteToFile(System.getProperty("user.dir") + "\\src\\cmdexe", "UserInformation.UI", "SeenWelcomePage=\"True\"");
     }
 }

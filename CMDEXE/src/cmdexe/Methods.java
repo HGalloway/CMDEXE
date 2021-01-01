@@ -24,6 +24,8 @@ public class Methods{
 		public ArrayList<String> LineText = new ArrayList<String>();
 		
 		public void ReadInFile(String Path, String FileName) throws FileNotFoundException { 
+			LineText.clear();
+			
 			File Filename = new File(Path + "\\" + FileName);
 			Scanner ReadFileScanner = new Scanner(Filename);
 					
@@ -36,8 +38,6 @@ public class Methods{
 		
 		public String TakeFileValue(int ValueInFileArray) {
 			String OriginalText = LineText.get(ValueInFileArray);
-			System.out.println(OriginalText);
-			
 			Pattern SignPattern = Pattern.compile("\"([^\"]*)\"");
 			Matcher Matcher = SignPattern.matcher(OriginalText);
 			Matcher.find();
@@ -48,8 +48,8 @@ public class Methods{
 		
 		public void WriteToFile(String Path, String FileName, String ThingToWrite) throws IOException {
 			File Filename = new File(Path + "\\" + FileName);
-			var FileWriter = new FileWriter(Filename);
-			FileWriter.write(ThingToWrite);
+			var FileWriter = new FileWriter(Filename, true);
+			FileWriter.write("\n" + ThingToWrite);
 			FileWriter.close();
 		}
 	}

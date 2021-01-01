@@ -10,9 +10,21 @@ public class CMDEXE extends Application{
 	public Stage primaryStage = new Stage();
 	@Override
     public void start(Stage prime) throws IOException {
-		//Starting application
+		ProgramInformation ProgramInformation = new ProgramInformation();
+		ProgramInformation.GetInformation(); //Setting Path Information
+		
+		System.out.println(ProgramInformation.SeenWelcomePage);
+		
 		ActionEvent event = new ActionEvent();
-		new Welcome().WelcomePage(event);
+		
+		if (ProgramInformation.SeenWelcomePage == true) {
+			//Starting Login Page
+			//new Login().LoginPage(event);
+		}
+		else {
+			//Starting Welcome Page
+			new Welcome().WelcomePageStart(event);
+		}
 		
     	//Exiting Application
         primaryStage.setOnCloseRequest(e->{
@@ -20,8 +32,7 @@ public class CMDEXE extends Application{
     		System.exit(0);
         });
     }
-	public static void main(String[] args){
-		System.out.println("Yeet");
-        //launch(args);
+	public static void main(String[] args) {
+		launch(args);
     }
 }
