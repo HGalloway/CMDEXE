@@ -47,7 +47,15 @@
             <HBox prefHeight="22.0" prefWidth="600.0" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="NextButton" mnemonicParsing="false" onAction="#ToMain" style="-fx-background-color: #85C7F2;" text="Next">
+                  <Button fx:id="BackButton" mnemonicParsing="false" style="-fx-background-color: #85C7F2;" text="Back" onAction="#BackToWelcome">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Button>
+                  <Button fx:id="NextButton" mnemonicParsing="false" style="-fx-background-color: #85C7F2;" text="Next" onAction="#ToMain">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
