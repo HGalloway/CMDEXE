@@ -26,8 +26,8 @@ public class Methods{
 		public void ReadInFile(String Path, String FileName) throws FileNotFoundException { 
 			LineText.clear();
 			
-			File Filename = new File(Path + "\\" + FileName);
-			Scanner ReadFileScanner = new Scanner(Filename);
+			File File = new File(Path + "\\" + FileName);
+			Scanner ReadFileScanner = new Scanner(File);
 					
 			while(ReadFileScanner.hasNextLine()) {
 				LineText.add(ReadFileScanner.nextLine());
@@ -49,7 +49,7 @@ public class Methods{
 		public void WriteToFile(String Path, String FileName, String ThingToWrite) throws IOException {
 			File Filename = new File(Path + "\\" + FileName);
 			var FileWriter = new FileWriter(Filename, true);
-			FileWriter.write("\n" + ThingToWrite);
+			FileWriter.write(ThingToWrite);
 			FileWriter.close();
 		}
 	}

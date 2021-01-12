@@ -8,22 +8,18 @@ import javafx.stage.Stage;
 
 public class CMDEXE extends Application{
 	public Stage primaryStage = new Stage();
+	public ActionEvent event = new ActionEvent();
 	@Override
     public void start(Stage prime) throws IOException {
 		ProgramInformation ProgramInformation = new ProgramInformation();
-		ProgramInformation.GetInformation(); //Setting Path Information
-		
-		System.out.println(ProgramInformation.SeenWelcomePage);
-		
-		ActionEvent event = new ActionEvent();
+		ProgramInformation.GetSystemInformation(); //Setting Path Information
 		
 		if (ProgramInformation.SeenWelcomePage == true) {
-			//Starting Login Page
-			//new Login().LoginPage(event);
+			new SceneBuilder().SetScene(event, false, "LoginNoBackButton.fxml", "Login", null);
 		}
 		else {
 			//Starting Welcome Page
-			new Welcome().WelcomePageStart(event);
+			new SceneBuilder().SetScene(event, false, "Welcome.fxml", "Welcome", null);
 		}
 		
     	//Exiting Application
@@ -34,5 +30,5 @@ public class CMDEXE extends Application{
     }
 	public static void main(String[] args) {
 		launch(args);
-    }
+    }	
 }

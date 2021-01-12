@@ -20,7 +20,7 @@
                   <Font name="System Bold" size="48.0" />
                </font>
             </Label>
-            <Line endX="380.47918701171875" endY="0.7928940057754517" startX="-219.813720703125" startY="0.7928932309150696" />
+            <Line endX="380.47918701171875" endY="0.7928940057754517" startX="-219.813720703125" startY="0.7928932309150696" VBox.vgrow="ALWAYS" />
          </children>
       </VBox>
    </top>
@@ -47,15 +47,7 @@
             <HBox prefHeight="22.0" prefWidth="600.0" />
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button fx:id="BackButton" mnemonicParsing="false" style="-fx-background-color: #85C7F2;" text="Back" onAction="#BackToWelcome">
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                  </Button>
-                  <Button fx:id="NextButton" mnemonicParsing="false" style="-fx-background-color: #85C7F2;" text="Next" onAction="#ToMain">
+                  <Button fx:id="NextButton" mnemonicParsing="false" onAction="#SendToMain" style="-fx-background-color: #85C7F2;" text="Next">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -63,7 +55,7 @@
                         <Insets />
                      </opaqueInsets>
                      <HBox.margin>
-                        <Insets left="20.0" />
+                        <Insets />
                      </HBox.margin>
                   </Button>
                </children>

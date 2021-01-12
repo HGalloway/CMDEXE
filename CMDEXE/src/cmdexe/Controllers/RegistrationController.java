@@ -1,7 +1,9 @@
 package cmdexe.Controllers;
 
+import java.io.File;
 import java.io.IOException;
-import cmdexe.Welcome;
+import java.sql.SQLException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -9,6 +11,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import cmdexe.CMDEXE;
+import cmdexe.Database_Controller;
+import cmdexe.SceneBuilder;
+import cmdexe.Methods;
+import cmdexe.Methods.FilesAndFolders;
 
 public class RegistrationController {
 	
@@ -40,11 +46,11 @@ public class RegistrationController {
 	
 	@FXML
 	private void BackToWelcome(ActionEvent event) throws IOException {
-		new Welcome().WelcomePage(event);
+		new SceneBuilder().SetScene(event, true, "Welcome.fxml", "Welcome", null);
     }
 	
 	@FXML
-	private void ToMain(ActionEvent event) {
+	private void SendToMain(ActionEvent event) throws SQLException, IOException {
 		//Reseting the Error Label
 		ResetErrorLabel();
 		
@@ -59,10 +65,9 @@ public class RegistrationController {
 		}
 		else {
 			//Put the data into the database
-			PutInfoIntoDatabase();
-			
+			StoreUserData();
 			//Send the user to the main page
-			MoveToMainScreen();
+			System.out.println("Sent to main page");
 		}
 	}
 	
@@ -89,11 +94,13 @@ public class RegistrationController {
 		}
 	}
 	
-	private void PutInfoIntoDatabase() {
+	private void StoreUserData() throws SQLException, IOException {
+		Database_Controller DatabaseController = new Database_Controller();
+		DatabaseController.InputIntoDatabase("UserInformation", "Username, Password", "'" + Username.getText()  + "','" + Password.getText() + "'");
 		
-	}
-	
-	private void MoveToMainScreen() {
-		
+		Methods Methods = new Methods();
+		FilesAndFolders FilesAndFolders = Methods.new FilesAndFolders();
+		FilesAndFolders.WriteToFile(System.getProperty("user.dir") + "\\src\\cmdexe", "UserInformation.info", "ServerIP=\"" + HostIP.getText() + "\"\nHostUsername=\"" + HostUsername.getText() + "\"\nHostPassword=\"" + HostPassword.getText() + "\"");
+
 	}
 }

@@ -67,7 +67,7 @@
                   <Insets />
                </opaqueInsets>
             </Button>
-            <Button fx:id="NextButton" mnemonicParsing="false" onAction="#ToMain" style="-fx-background-color: #85C7F2;" text="Next">
+            <Button fx:id="NextButton" mnemonicParsing="false" onAction="#SendToMain" style="-fx-background-color: #85C7F2;" text="Next">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

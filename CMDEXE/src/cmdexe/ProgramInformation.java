@@ -11,9 +11,9 @@ public class ProgramInformation {
 	Methods Methods = new Methods();
 	FilesAndFolders FilesAndFolders = Methods.new FilesAndFolders();
 	
-	public void GetInformation() throws FileNotFoundException {
+	public void GetSystemInformation() throws FileNotFoundException {
 		
-		FilesAndFolders.ReadInFile(System.getProperty("user.dir") + "\\src\\cmdexe","UserInformation.UI");
+		FilesAndFolders.ReadInFile(System.getProperty("user.dir") + "\\src\\cmdexe","SystemInformation.info");
 		
 		//Setting StylePath Variable
 		StylePath = FilesAndFolders.TakeFileValue(0);

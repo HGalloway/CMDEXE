@@ -3,8 +3,7 @@ package cmdexe.Controllers;
 import java.io.IOException;
 import cmdexe.Methods;
 import cmdexe.Methods.FilesAndFolders;
-import cmdexe.Login;
-import cmdexe.Registration;
+import cmdexe.SceneBuilder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -15,20 +14,19 @@ public class WelcomeController {
     //Registration Button
     @FXML
     private void ToRegistrationPage(ActionEvent event) throws IOException{
-    	//WriteWelcomeBooleanToFile();
-    	new Registration().RegistrationPage(event);
+    	WriteWelcomeBooleanToFile();
+    	new SceneBuilder().SetScene(event, true, "Registration.fxml", "Registration", null);
     }
     
     //Login Button
     @FXML
     private void ToLoginPage(ActionEvent event) throws IOException{
-    	//WriteWelcomeBooleanToFile();
-    	System.out.println("To Login Page");
-    	new Login().LoginPage(event);
+    	WriteWelcomeBooleanToFile();
+    	new SceneBuilder().SetScene(event, true, "Login.fxml", "Login", null);
     }
     
 	private void WriteWelcomeBooleanToFile() throws IOException {
-    	FilesAndFolders.ReadInFile(System.getProperty("user.dir") + "\\src\\cmdexe", "UserInformation.UI");
-    	FilesAndFolders.WriteToFile(System.getProperty("user.dir") + "\\src\\cmdexe", "UserInformation.UI", "SeenWelcomePage=\"True\"");
+    	FilesAndFolders.ReadInFile(System.getProperty("user.dir") + "\\src\\cmdexe", "SystemInformation.info");
+    	FilesAndFolders.WriteToFile(System.getProperty("user.dir") + "\\src\\cmdexe", "SystemInformation.info", "\nSeenWelcomePage=\"True\"");
     }
 }
