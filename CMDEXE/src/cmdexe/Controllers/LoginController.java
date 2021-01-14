@@ -31,8 +31,10 @@ public class LoginController {
 	private Button NextButton;
 	
 	@FXML
-	public Button BackButton;
+	private Button BackButton;
 	
+	@FXML
+	private Button RegistrationLink;
 	
 	@FXML
 	private void BackToWelcome(ActionEvent event) throws IOException {
@@ -95,4 +97,9 @@ public class LoginController {
 			return true; 
 		}
 	}
+	
+    @FXML
+    private void ToRegistrationPage(ActionEvent event) throws IOException{
+    	new SceneBuilder().SetScene(event, true, "RegistrationNoBackButton.fxml", "Registration", null);
+    }
 }

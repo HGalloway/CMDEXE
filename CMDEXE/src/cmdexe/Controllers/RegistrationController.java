@@ -1,6 +1,5 @@
 package cmdexe.Controllers;
 
-import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 
@@ -19,9 +18,14 @@ import cmdexe.Methods.FilesAndFolders;
 public class RegistrationController {
 	
 	CMDEXE CMDEXE = new CMDEXE();
+	Database_Controller DatabaseController = new Database_Controller();
+	Methods Methods = new Methods();
+	FilesAndFolders FilesAndFolders = Methods.new FilesAndFolders();
+	
+	private boolean UsernameTaken = false;
 	
 	@FXML
-	public TextField Username; 
+	private TextField Username; 
 	
 	@FXML
 	private PasswordField Password;
@@ -39,12 +43,6 @@ public class RegistrationController {
 	private Label ErrorLabel;
 	
 	@FXML
-	private Button NextButton;
-	
-	@FXML
-	private Button BackButton;
-	
-	@FXML
 	private void BackToWelcome(ActionEvent event) throws IOException {
 		new SceneBuilder().SetScene(event, true, "Welcome.fxml", "Welcome", null);
     }
@@ -56,24 +54,29 @@ public class RegistrationController {
 		
 		//Check for any errors
 		if (CheckingIfAllFieldsFilled() == false) {
-			ErrorLabel.setText("Please fill in all the fields.");
-			ErrorLabel.setVisible(true);
+			SetErrorLabel("Please fill in all the fields.");
 		}
 		else if (PasswordCorrectLength() == false) {
-			ErrorLabel.setText("Your password isn't strong enough. Please make a stronger password.");
-			ErrorLabel.setVisible(true);
+			SetErrorLabel("Your password isn't strong enough. Please make a stronger password.");
 		}
 		else {
 			//Put the data into the database
 			StoreUserData();
 			//Send the user to the main page
-			System.out.println("Sent to main page");
+			if (UsernameTaken == false) {
+				System.out.println("Sent to main");
+			}
 		}
 	}
 	
 	private void ResetErrorLabel() {
 		ErrorLabel.setVisible(false);
 		ErrorLabel.setText("");
+	}
+	
+	private void SetErrorLabel(String LabelText) {
+		ErrorLabel.setText(LabelText);
+		ErrorLabel.setVisible(true);
 	}
 	
 	private boolean CheckingIfAllFieldsFilled() {
@@ -95,12 +98,18 @@ public class RegistrationController {
 	}
 	
 	private void StoreUserData() throws SQLException, IOException {
-		Database_Controller DatabaseController = new Database_Controller();
-		DatabaseController.InputIntoDatabase("UserInformation", "Username, Password", "'" + Username.getText()  + "','" + Password.getText() + "'");
-		
-		Methods Methods = new Methods();
-		FilesAndFolders FilesAndFolders = Methods.new FilesAndFolders();
-		FilesAndFolders.WriteToFile(System.getProperty("user.dir") + "\\src\\cmdexe", "UserInformation.info", "ServerIP=\"" + HostIP.getText() + "\"\nHostUsername=\"" + HostUsername.getText() + "\"\nHostPassword=\"" + HostPassword.getText() + "\"");
-
+		if (DatabaseController.CheckValuesInDatabase("Username", "UserInformation", "Username='" + Username.getText() + "'") != null) {
+			UsernameTaken = true;
+			SetErrorLabel("Username already taken");
+		}
+		else {
+			UsernameTaken = false;
+			DatabaseController.InputIntoDatabase("UserInformation", "Username, Password, HostIP, HostUsername, HostPassword", "'" + Username.getText()  + "','" + Password.getText() + "','" + HostIP.getText() + "','" + HostUsername.getText() + "','" + HostPassword.getText() + "'");
+		}
+	}
+	
+	@FXML
+	private void ToLoginPage(ActionEvent event) throws IOException {
+		new SceneBuilder().SetScene(event, true, "LoginNoBackButton.fxml", "Welcome", null);
 	}
 }

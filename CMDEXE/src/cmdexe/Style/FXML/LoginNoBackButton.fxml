@@ -38,6 +38,7 @@
                </VBox.margin>
             </PasswordField>
             <Label fx:id="ErrorLabel" visible="false" />
+            <Button fx:id="RegistrationLink" alignment="CENTER" layoutX="280.0" layoutY="127.0" mnemonicParsing="false" onAction="#ToRegistrationPage" style="-fx-background-color: #ffffff00;" text="Don't have an account? Sign up" />
          </children>
       </VBox>
    </center>

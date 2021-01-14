@@ -26,7 +26,13 @@ public class WelcomeController {
     }
     
 	private void WriteWelcomeBooleanToFile() throws IOException {
-    	FilesAndFolders.ReadInFile(System.getProperty("user.dir") + "\\src\\cmdexe", "SystemInformation.info");
-    	FilesAndFolders.WriteToFile(System.getProperty("user.dir") + "\\src\\cmdexe", "SystemInformation.info", "\nSeenWelcomePage=\"True\"");
+		Methods Methods = new Methods();
+		FilesAndFolders FilesAndFolders = Methods.new FilesAndFolders();
+		
+		FilesAndFolders.ReadInFile(System.getProperty("user.dir") + "\\src\\cmdexe", "SystemInformation.info");
+		
+		if(FilesAndFolders.LineText.size() == 2) {
+			FilesAndFolders.WriteToFile(System.getProperty("user.dir") + "\\src\\cmdexe", "SystemInformation.info", "\nSeenWelcomePage=\"true\"");
+		}
     }
 }

@@ -1,6 +1,9 @@
 package cmdexe;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import cmdexe.Methods.FilesAndFolders;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -28,7 +31,7 @@ public class CMDEXE extends Application{
     		System.exit(0);
         });
     }
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		launch(args);
     }	
 }

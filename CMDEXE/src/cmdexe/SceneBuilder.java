@@ -21,6 +21,5 @@ public class SceneBuilder {
         cmdexe.primaryStage.setTitle(WindowTitle);
         //cmdexe.primaryStage.getIcons().add(new Image("Style\\ICO" + ICOName));
         cmdexe.primaryStage.show();
-        
 	}
 }
