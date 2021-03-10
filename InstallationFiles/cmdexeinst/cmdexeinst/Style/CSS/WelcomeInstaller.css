@@ -1,0 +1,14 @@
+#Title {
+    -fx-font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+    -fx-font-size: 48px;
+}
+#SubTitle{
+    -fx-font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+    -fx-font-size: 24px;
+}
+#NextButton {
+    -fx-color: #85C7F2;
+    -fx-font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}

@@ -1,0 +1,25 @@
+#TopVBox {
+    -fx-background-color: white;
+}
+#Title {
+    -fx-font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+    -fx-font-weight: 100;
+    -fx-font-size: 48px;
+    -fx-padding: 15;
+}
+#CenterHBox{
+    -fx-background-color: #d4d1d1;
+}
+#BottomHBox{
+    -fx-border-color: black;
+    -fx-background-color: #d4d1d1;
+}
+#BottomRightHBox{
+
+}
+#InstallButton{
+    -fx-font-family: "System", Bold;
+    -fx-font-weight: bold;
+    -fx-font-size: 18;
+    -fx-background-color: #85C7F2;
+}

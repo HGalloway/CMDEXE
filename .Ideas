@@ -1,0 +1,9 @@
+Ideas page - 
+
+CMDEXE {
+    Making simple main page with simple settings page and server lookout page.
+    Making the command executing code. Do this in methods under the class CommandExecution.
+}
+CMDEXEInstaller {
+    Create path page that takes path and installs CMDEXE there. 
+}

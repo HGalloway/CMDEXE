@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cmdexeinst.Controllers.WelcomeController" stylesheets="@Style/CSS/WelcomeInstaller.css">
+   <center>
+      <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label id="Title" ellipsisString="" text="Welcome" textOverrun="CLIP"/>
+            <Label id="SubTitle" ellipsisString="" text="to the CMDEXE installer" textAlignment="CENTER" textOverrun="CLIP"/>
+            <Line endX="130.84561157226562" endY="-1.2428299188613892" startX="-200.44728088378906" startY="-1.2426408529281616" />
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <HBox id="BottomHBox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button id="NextButton" fx:id="NextButton" mnemonicParsing="false" onAction="#ToInstallPathPage" text="Next">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

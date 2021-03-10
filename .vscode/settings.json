@@ -1,0 +1,15 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "Libraries/javafx-sdk-11.0.2/lib/javafx.base.jar",
+        "Libraries/javafx-sdk-11.0.2/lib/javafx.controls.jar",
+        "Libraries/javafx-sdk-11.0.2/lib/javafx.fxml.jar",
+        "Libraries/javafx-sdk-11.0.2/lib/javafx.graphics.jar",
+        "Libraries/javafx-sdk-11.0.2/lib/javafx.media.jar",
+        "Libraries/javafx-sdk-11.0.2/lib/javafx.swing.jar",
+        "Libraries/javafx-sdk-11.0.2/lib/javafx.web.jar",
+        "Libraries/mysql-connector-java-8.0.23/mysql-connector-java-8.0.23/mysql-connector-java-8.0.23.jar",
+        "Libraries/javafx-sdk-11.0.2/lib/javafx-swt.jar"
+    ],
+    "java.configuration.checkProjectSettingsExclusions": true
+}
